@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { MessageSquare, Brain, Download, ArrowRight } from 'lucide-react';
+import { MessageSquare, Brain, Download } from 'lucide-react';
 import { COPY } from '../../constants/copy';
 import { useScrollAnimation, staggerDelay } from '../../utils/animations';
 
@@ -34,68 +34,87 @@ export const HowItWorks: React.FC = () => {
           </h2>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 items-center max-w-6xl mx-auto">
-          {COPY.howItWorks.steps.map((step, idx) => {
-            const Icon = iconMap[step.icon as keyof typeof iconMap];
-            const isLastStep = idx === COPY.howItWorks.steps.length - 1;
-
-            return (
-              <React.Fragment key={idx}>
-                {/* Step Card */}
+        {/* Timeline Stepper */}
+        <div className="max-w-5xl mx-auto">
+          {/* Mobile: Stack vertically */}
+          <div className="flex flex-col gap-8 lg:hidden">
+            {COPY.howItWorks.steps.map((step, idx) => {
+              const Icon = iconMap[step.icon as keyof typeof iconMap];
+              return (
                 <div
+                  key={idx}
                   className={`
-                    group relative
+                    flex gap-6 items-start
                     transition-all duration-700 ease-out
-                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+                    ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}
                   `}
-                  style={{ transitionDelay: isVisible ? staggerDelay(idx, 200) : '0ms' }}
+                  style={{ transitionDelay: isVisible ? staggerDelay(idx, 150) : '0ms' }}
                 >
-                  {/* Card */}
-                  <div className="relative p-8 lg:p-10 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
-                    {/* Step Number */}
-                    <div className="absolute -top-4 left-8">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-xl shadow-indigo-500/30">
-                        <span className="text-lg font-bold text-white">{step.number}</span>
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-lg">
+                      <span className="text-lg font-bold text-white">{step.number}</span>
+                    </div>
+                    {idx !== COPY.howItWorks.steps.length - 1 && (
+                      <div className="w-0.5 h-20 bg-gradient-to-b from-slate-700 to-transparent" />
+                    )}
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-400">
+                        <Icon size={20} strokeWidth={2} />
                       </div>
+                      <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                    </div>
+                    <p className="text-slate-400 leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop: Horizontal timeline */}
+          <div className="hidden lg:block relative">
+            {/* Connecting Line */}
+            <div className="absolute top-[60px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+
+            {/* Steps */}
+            <div className="flex justify-between items-start relative">
+              {COPY.howItWorks.steps.map((step, idx) => {
+                const Icon = iconMap[step.icon as keyof typeof iconMap];
+                return (
+                  <div
+                    key={idx}
+                    className={`
+                      flex-1 flex flex-col items-center text-center px-4
+                      transition-all duration-700 ease-out
+                      ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+                    `}
+                    style={{ transitionDelay: isVisible ? staggerDelay(idx, 200) : '0ms' }}
+                  >
+                    {/* Step Number - sits on the line */}
+                    <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-2xl shadow-indigo-500/30 mb-8 relative z-10 border-4 border-slate-900">
+                      <span className="text-3xl font-bold text-white">{step.number}</span>
                     </div>
 
                     {/* Icon */}
-                    <div className="mb-6 mt-4">
-                      <div className="relative inline-block">
-                        <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/20 rounded-2xl blur-xl transition-all duration-500" />
-                        <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-indigo-400 group-hover:text-indigo-300 group-hover:border-indigo-500/40 transition-all duration-500 group-hover:scale-110">
-                          <Icon size={28} strokeWidth={2} />
-                        </div>
+                    <div className="mb-6">
+                      <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-400 hover:text-indigo-300 hover:border-indigo-500/40 transition-all duration-300 hover:scale-110">
+                        <Icon size={28} strokeWidth={2} />
                       </div>
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 group-hover:text-indigo-300 transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-white mb-4">
                       {step.title}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+                    <p className="text-slate-400 leading-relaxed max-w-xs">
                       {step.description}
                     </p>
                   </div>
-                </div>
-
-                {/* Arrow between cards (desktop only) */}
-                {!isLastStep && (
-                  <div
-                    className={`
-                      hidden lg:flex items-center justify-center
-                      transition-all duration-700 ease-out
-                      ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}
-                    `}
-                    style={{ transitionDelay: isVisible ? staggerDelay(idx, 300) : '0ms' }}
-                  >
-                    <ArrowRight className="text-slate-600 w-8 h-8" strokeWidth={2} />
-                  </div>
-                )}
-              </React.Fragment>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
