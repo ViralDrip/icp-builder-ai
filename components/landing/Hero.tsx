@@ -62,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
         `}
       >
         {/* Glowing Badge */}
-        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 border border-indigo-500/30 text-indigo-200 text-sm font-semibold mb-8 backdrop-blur-xl shadow-2xl shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:scale-105 transition-all duration-300 group">
+        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 border border-indigo-500/30 text-indigo-200 text-sm font-semibold mb-8 backdrop-blur-xl shadow-2xl shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:scale-105 transition-all duration-500 group animate-fade-in">
           <span className="flex h-2.5 w-2.5 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-300 opacity-75" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-indigo-400 to-purple-400" />
@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
           <Button
             onClick={onStart}
             size="lg"
-            className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 shadow-2xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-300"
+            className="group relative overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 shadow-2xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-105 transition-all duration-500 hover:-translate-y-1"
           >
             <span className="relative z-10 flex items-center gap-2 font-bold text-lg">
               {COPY.hero.cta}
@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
             variant="outline"
             size="lg"
             onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-            className="border-slate-700 hover:border-indigo-500/50 bg-slate-900/50 hover:bg-slate-800/50 backdrop-blur-xl hover:scale-105 transition-all duration-300 font-semibold text-lg shadow-xl"
+            className="border-slate-700 hover:border-indigo-500/50 bg-slate-900/50 hover:bg-slate-800/50 backdrop-blur-xl hover:scale-105 transition-all duration-500 hover:-translate-y-1 font-semibold text-lg shadow-xl"
           >
             {COPY.hero.ctaSecondary}
           </Button>
@@ -123,7 +123,7 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
             {socialProofItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group flex items-center gap-3 px-5 py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:scale-105 cursor-default"
+                className="group flex items-center gap-3 px-5 py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg cursor-default"
               >
                 <div className="text-slate-400 group-hover:text-slate-300 transition-colors">
                   {item.icon}

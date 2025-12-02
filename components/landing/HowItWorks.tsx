@@ -33,56 +33,58 @@ export const HowItWorks: React.FC = () => {
           </h2>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-          {COPY.howItWorks.steps.map((step, idx) => {
-            const Icon = iconMap[step.icon as keyof typeof iconMap];
-            const isLastStep = idx === COPY.howItWorks.steps.length - 1;
+        {/* Steps with better connectors */}
+        <div className="relative">
+          {/* Horizontal connecting line for desktop */}
+          <div className="hidden lg:block absolute top-[72px] left-0 right-0 px-[15%]">
+            <div className="w-full h-[2px] bg-gradient-to-r from-slate-700/30 via-slate-600/50 to-slate-700/30" />
+          </div>
 
-            return (
-              <div
-                key={idx}
-                className={`
-                  relative flex flex-col items-center text-center
-                  transition-all duration-700 ease-out
-                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
-                `}
-                style={{ transitionDelay: isVisible ? staggerDelay(idx, 200) : '0ms' }}
-              >
-                {/* Connecting arrow for desktop */}
-                {!isLastStep && (
-                  <div className="hidden lg:block absolute top-20 left-[60%] w-[80%] h-0.5">
-                    <div className="w-full h-full bg-gradient-to-r from-slate-700/50 to-transparent" />
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-slate-700 rounded-full" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8">
+            {COPY.howItWorks.steps.map((step, idx) => {
+              const Icon = iconMap[step.icon as keyof typeof iconMap];
+
+              return (
+                <div
+                  key={idx}
+                  className={`
+                    relative flex flex-col items-center text-center
+                    transition-all duration-700 ease-out
+                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+                  `}
+                  style={{ transitionDelay: isVisible ? staggerDelay(idx, 250) : '0ms' }}
+                >
+                  {/* Step Number Badge */}
+                  <div className="relative mb-8 z-10">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/30 flex items-center justify-center backdrop-blur-sm shadow-lg shadow-indigo-500/10 transition-all duration-300 hover:scale-110 hover:shadow-indigo-500/20">
+                      <span className="text-2xl font-bold bg-gradient-to-br from-indigo-300 to-purple-300 bg-clip-text text-transparent">{step.number}</span>
+                    </div>
                   </div>
-                )}
 
-                {/* Step Number */}
-                <div className="mb-8">
-                  <div className="w-12 h-12 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center">
-                    <span className="text-xl font-bold text-indigo-400">{step.number}</span>
+                  {/* Icon Container */}
+                  <div className="mb-10 group">
+                    <div className="relative">
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 rounded-3xl blur-xl transition-all duration-500" />
+                      <div className="relative w-24 h-24 rounded-3xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-indigo-300 group-hover:border-indigo-500/40 group-hover:bg-slate-800 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1 shadow-lg">
+                        <Icon size={40} strokeWidth={1.5} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="max-w-xs">
+                    <h3 className="text-2xl font-bold text-white mb-5 group-hover:text-indigo-300 transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-400 text-lg leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
-
-                {/* Icon */}
-                <div className="mb-8 group">
-                  <div className="w-20 h-20 rounded-2xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-indigo-400 group-hover:border-indigo-500/30 transition-all duration-300">
-                    <Icon size={36} strokeWidth={1.5} />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="max-w-sm">
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    {step.title}
-                  </h3>
-                  <p className="text-slate-400 text-lg leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

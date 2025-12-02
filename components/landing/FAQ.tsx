@@ -40,10 +40,10 @@ export const FAQ: React.FC = () => {
                 key={idx}
                 className={`
                   bg-slate-900 rounded-xl border transition-all duration-700 ease-out overflow-hidden
-                  ${isOpen ? 'border-indigo-500/50 shadow-lg shadow-indigo-500/10' : 'border-slate-800 hover:border-slate-700'}
-                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                  ${isOpen ? 'border-indigo-500/50 shadow-xl shadow-indigo-500/10 scale-[1.02]' : 'border-slate-800 hover:border-slate-700 hover:shadow-lg'}
+                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
                 `}
-                style={{ transitionDelay: isVisible ? staggerDelay(idx, 100) : '0ms' }}
+                style={{ transitionDelay: isVisible ? staggerDelay(idx, 150) : '0ms' }}
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
