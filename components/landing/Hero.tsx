@@ -33,56 +33,37 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
       className="relative min-h-screen flex items-center justify-center pt-20 pb-16 lg:pt-24 lg:pb-20 overflow-hidden"
     >
       {/* Solid background at the very back */}
-      <div className="absolute inset-0 bg-slate-950 -z-30" />
+      <div className="absolute inset-0 bg-slate-950" />
 
-      {/* Animated Background Layer 1: Gradient Mesh - EXTREMELY VISIBLE */}
-      <div className="absolute inset-0 -z-20">
-        {/* Large gradient orbs with STRONG colors and LESS blur */}
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/80 via-purple-500/60 to-transparent rounded-full blur-[60px] animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-to-bl from-pink-500/70 via-purple-500/55 to-transparent rounded-full blur-[50px] animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-t from-cyan-500/65 via-indigo-500/50 to-transparent rounded-full blur-[55px] animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
-
-        {/* Additional prominent orbs for more depth */}
-        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-gradient-to-r from-violet-500/60 to-transparent rounded-full blur-[60px] animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '5s' }} />
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-to-l from-fuchsia-500/65 to-transparent rounded-full blur-[50px] animate-pulse" style={{ animationDelay: '2.5s', animationDuration: '4.5s' }} />
+      {/* Subtle gradient orbs - more understated */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-purple-500/20 via-pink-500/10 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
       </div>
 
-      {/* Animated Background Layer 2: Enhanced Dot Grid */}
-      <div className="absolute inset-0 -z-10">
+      {/* Subtle dot grid */}
+      <div className="absolute inset-0 z-0">
         <div
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `
-              radial-gradient(circle, rgba(99, 102, 241, 0.5) 2px, transparent 2px),
-              radial-gradient(circle, rgba(168, 85, 247, 0.4) 1.5px, transparent 1.5px)
-            `,
-            backgroundSize: '50px 50px, 25px 25px',
-            backgroundPosition: '0 0, 25px 25px'
+            backgroundImage: `radial-gradient(circle, rgba(99, 102, 241, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
           }}
         />
       </div>
 
-      {/* EXTREMELY VISIBLE Spotlight effect following mouse */}
+      {/* Subtle spotlight effect following mouse */}
       <div
-        className="absolute -z-10 pointer-events-none transition-all duration-200 ease-out"
+        className="absolute z-0 pointer-events-none transition-all duration-300 ease-out"
         style={{
-          left: mousePosition.x - 300,
-          top: mousePosition.y - 300,
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(168, 85, 247, 0.4) 40%, transparent 70%)',
-          filter: 'blur(40px)'
+          left: mousePosition.x - 400,
+          top: mousePosition.y - 400,
+          width: '800px',
+          height: '800px',
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%)',
+          filter: 'blur(60px)'
         }}
       />
-
-      {/* VERY VISIBLE Floating particles with less blur */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-indigo-400/80 rounded-full blur-sm animate-float shadow-2xl shadow-indigo-500/70" />
-        <div className="absolute top-1/3 right-1/3 w-10 h-10 bg-purple-400/90 rounded-full blur-sm animate-float shadow-2xl shadow-purple-500/70" style={{ animationDelay: '1s', animationDuration: '6s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-14 h-14 bg-pink-400/70 rounded-full blur-sm animate-float shadow-2xl shadow-pink-500/70" style={{ animationDelay: '2s', animationDuration: '7s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-11 h-11 bg-cyan-400/80 rounded-full blur-sm animate-float shadow-2xl shadow-cyan-500/70" style={{ animationDelay: '3s', animationDuration: '8s' }} />
-        <div className="absolute top-1/2 left-1/2 w-9 h-9 bg-fuchsia-400/90 rounded-full blur-sm animate-float shadow-2xl shadow-fuchsia-500/70" style={{ animationDelay: '4s', animationDuration: '9s' }} />
-      </div>
 
       {/* Main Content */}
       <div
@@ -104,16 +85,18 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
           <Sparkles size={14} className="text-indigo-300 group-hover:rotate-12 transition-transform" />
         </div>
 
-        {/* Epic Headline with Multi-layer Gradient */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-[1.1] relative">
+        {/* Headline with selective glow on key words */}
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-[1.1] relative text-white">
+          Know{' '}
           <span className="relative inline-block">
-            <span className="absolute inset-0 blur-2xl opacity-50 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {COPY.hero.headline}
+            <span className="absolute inset-0 blur-xl opacity-40 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              exactly who
             </span>
-            <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 animate-gradient bg-[length:200%_auto]">
-              {COPY.hero.headline}
+            <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-300">
+              exactly who
             </span>
           </span>
+          {' '}to sell to
         </h1>
 
         {/* Description with Subtle Glow */}
@@ -145,19 +128,19 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
           </Button>
         </div>
 
-        {/* Social Proof with Glassmorphism Cards */}
+        {/* Social Proof - Minimal Style */}
         <div className="pt-10">
           <p className="text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">Trusted by builders worldwide</p>
           <div className="flex items-center justify-center gap-4 flex-wrap max-w-3xl mx-auto">
             {socialProofItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-slate-900/40 backdrop-blur-2xl border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-indigo-500/20 cursor-default"
+                className="group flex items-center gap-3 px-5 py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:scale-105 cursor-default"
               >
-                <div className={`p-2 rounded-lg bg-gradient-to-br ${item.color} opacity-90 group-hover:opacity-100 transition-opacity shadow-lg`}>
-                  <span className="text-white">{item.icon}</span>
+                <div className="text-slate-400 group-hover:text-slate-300 transition-colors">
+                  {item.icon}
                 </div>
-                <span className="text-slate-200 font-medium">{item.text}</span>
+                <span className="text-slate-300 font-medium">{item.text}</span>
               </div>
             ))}
           </div>
