@@ -116,19 +116,37 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
           </Button>
         </div>
 
-        {/* Social Proof - Minimal Style */}
+        {/* Social Proof - Compact on Mobile */}
         <div className="pt-10">
-          <p className="text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">Trusted by builders worldwide</p>
-          <div className="flex items-center justify-center gap-3 md:gap-4 flex-wrap max-w-3xl mx-auto">
+          <p className="text-slate-400 text-sm mb-4 md:mb-6 uppercase tracking-wider font-semibold">Trusted by builders worldwide</p>
+
+          {/* Mobile: Icons only in single row */}
+          <div className="flex md:hidden items-center justify-center gap-6">
             {socialProofItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-5 md:py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg cursor-default"
+                className="group flex flex-col items-center gap-2"
+                title={item.text}
               >
-                <div className="text-slate-400 group-hover:text-slate-300 transition-colors flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-slate-900/40 backdrop-blur-sm border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-slate-300 group-hover:border-slate-700 transition-all duration-300">
                   {item.icon}
                 </div>
-                <span className="text-slate-300 font-medium text-sm md:text-base whitespace-nowrap">{item.text}</span>
+                <span className="text-xs text-slate-500 text-center max-w-[80px] leading-tight">{item.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: Full badges */}
+          <div className="hidden md:flex items-center justify-center gap-4 flex-wrap max-w-3xl mx-auto">
+            {socialProofItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="group flex items-center gap-3 px-5 py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg cursor-default"
+              >
+                <div className="text-slate-400 group-hover:text-slate-300 transition-colors">
+                  {item.icon}
+                </div>
+                <span className="text-slate-300 font-medium">{item.text}</span>
               </div>
             ))}
           </div>
