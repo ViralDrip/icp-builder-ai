@@ -86,28 +86,28 @@ export const HowItWorks: React.FC = () => {
                     key={idx}
                     className={`
                       flex-1 flex flex-col items-center text-center px-4
-                      transition-all duration-700 ease-out
+                      transition-all duration-700 ease-out group
                       ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
                     `}
                     style={{ transitionDelay: isVisible ? staggerDelay(idx, 200) : '0ms' }}
                   >
-                    {/* Step Number - sits on the line */}
-                    <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-2xl shadow-indigo-500/30 mb-8 relative z-10 border-4 border-slate-900">
-                      <span className="text-3xl font-bold text-white">{step.number}</span>
-                    </div>
-
-                    {/* Icon */}
-                    <div className="mb-6">
-                      <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-400 hover:text-indigo-300 hover:border-indigo-500/40 transition-all duration-300 hover:scale-110">
-                        <Icon size={28} strokeWidth={2} />
+                    {/* Step Circle with Icon - sits on the line */}
+                    <div className="relative mb-10">
+                      <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-700 flex flex-col items-center justify-center shadow-xl relative z-10 group-hover:border-indigo-500/40 transition-all duration-500 group-hover:scale-105">
+                        {/* Icon */}
+                        <Icon size={32} strokeWidth={2} className="text-indigo-400 mb-2 group-hover:text-indigo-300 transition-colors" />
+                        {/* Number */}
+                        <span className="text-sm font-bold text-slate-400 group-hover:text-slate-300 transition-colors">Step {step.number}</span>
                       </div>
+                      {/* Subtle glow on hover */}
+                      <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 rounded-full blur-2xl transition-all duration-500 -z-10" />
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-2xl font-bold text-white mb-4">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-indigo-300 transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed max-w-xs">
+                    <p className="text-slate-400 leading-relaxed max-w-xs group-hover:text-slate-300 transition-colors duration-300">
                       {step.description}
                     </p>
                   </div>
