@@ -32,48 +32,53 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center pt-20 pb-16 lg:pt-24 lg:pb-20 overflow-hidden bg-slate-950"
     >
-      {/* Animated Background Layer 1: Gradient Mesh */}
+      {/* Animated Background Layer 1: Gradient Mesh - MUCH MORE VISIBLE */}
       <div className="absolute inset-0 -z-20">
-        {/* Large gradient orbs with smooth animation */}
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-transparent rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-to-bl from-pink-500/25 via-purple-500/15 to-transparent rounded-full blur-[90px] animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-t from-cyan-500/20 via-indigo-500/15 to-transparent rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
+        {/* Large gradient orbs with strong colors */}
+        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/60 via-purple-500/40 to-transparent rounded-full blur-[80px] animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-to-bl from-pink-500/50 via-purple-500/35 to-transparent rounded-full blur-[70px] animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }} />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-t from-cyan-500/45 via-indigo-500/30 to-transparent rounded-full blur-[90px] animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
 
-        {/* Radial gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-slate-950/50 to-slate-950" />
+        {/* Additional prominent orbs for more depth */}
+        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-gradient-to-r from-violet-500/40 to-transparent rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '5s' }} />
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-to-l from-fuchsia-500/45 to-transparent rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '2.5s', animationDuration: '4.5s' }} />
       </div>
 
-      {/* Animated Background Layer 2: Dot Grid */}
+      {/* Animated Background Layer 2: Enhanced Dot Grid */}
       <div className="absolute inset-0 -z-10">
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: `radial-gradient(circle, rgba(99, 102, 241, 0.15) 1px, transparent 1px)`,
-            backgroundSize: '40px 40px',
-            maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)'
+            backgroundImage: `
+              radial-gradient(circle, rgba(99, 102, 241, 0.4) 1.5px, transparent 1.5px),
+              radial-gradient(circle, rgba(168, 85, 247, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px, 25px 25px',
+            backgroundPosition: '0 0, 25px 25px'
           }}
         />
       </div>
 
-      {/* Spotlight effect following mouse */}
+      {/* MUCH MORE VISIBLE Spotlight effect following mouse */}
       <div
-        className="absolute -z-10 pointer-events-none transition-all duration-300 ease-out"
+        className="absolute -z-10 pointer-events-none transition-all duration-200 ease-out"
         style={{
-          left: mousePosition.x - 400,
-          top: mousePosition.y - 400,
-          width: '800px',
-          height: '800px',
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
-          filter: 'blur(40px)'
+          left: mousePosition.x - 300,
+          top: mousePosition.y - 300,
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(168, 85, 247, 0.2) 40%, transparent 70%)',
+          filter: 'blur(60px)'
         }}
       />
 
-      {/* Floating particles */}
+      {/* BIGGER, MORE VISIBLE Floating particles */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-indigo-400/40 rounded-full blur-sm animate-float" />
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-purple-400/40 rounded-full blur-sm animate-float" style={{ animationDelay: '1s', animationDuration: '6s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-4 h-4 bg-pink-400/30 rounded-full blur-sm animate-float" style={{ animationDelay: '2s', animationDuration: '7s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-cyan-400/40 rounded-full blur-sm animate-float" style={{ animationDelay: '3s', animationDuration: '8s' }} />
+        <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-indigo-400/60 rounded-full blur-md animate-float shadow-lg shadow-indigo-500/50" />
+        <div className="absolute top-1/3 right-1/3 w-6 h-6 bg-purple-400/70 rounded-full blur-md animate-float shadow-lg shadow-purple-500/50" style={{ animationDelay: '1s', animationDuration: '6s' }} />
+        <div className="absolute bottom-1/3 left-1/3 w-10 h-10 bg-pink-400/50 rounded-full blur-md animate-float shadow-lg shadow-pink-500/50" style={{ animationDelay: '2s', animationDuration: '7s' }} />
+        <div className="absolute bottom-1/4 right-1/4 w-7 h-7 bg-cyan-400/60 rounded-full blur-md animate-float shadow-lg shadow-cyan-500/50" style={{ animationDelay: '3s', animationDuration: '8s' }} />
+        <div className="absolute top-1/2 left-1/2 w-5 h-5 bg-fuchsia-400/70 rounded-full blur-md animate-float shadow-lg shadow-fuchsia-500/50" style={{ animationDelay: '4s', animationDuration: '9s' }} />
       </div>
 
       {/* Main Content */}
