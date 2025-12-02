@@ -30,8 +30,11 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 lg:pt-24 lg:pb-20 overflow-hidden bg-slate-950"
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 lg:pt-24 lg:pb-20 overflow-hidden"
     >
+      {/* Solid background at the very back */}
+      <div className="absolute inset-0 bg-slate-950 -z-30" />
+
       {/* Animated Background Layer 1: Gradient Mesh - EXTREMELY VISIBLE */}
       <div className="absolute inset-0 -z-20">
         {/* Large gradient orbs with STRONG colors and LESS blur */}
