@@ -52,18 +52,6 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
         />
       </div>
 
-      {/* Subtle spotlight effect following mouse */}
-      <div
-        className="absolute z-0 pointer-events-none transition-all duration-300 ease-out"
-        style={{
-          left: mousePosition.x - 400,
-          top: mousePosition.y - 400,
-          width: '800px',
-          height: '800px',
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%)',
-          filter: 'blur(60px)'
-        }}
-      />
 
       {/* Main Content */}
       <div
