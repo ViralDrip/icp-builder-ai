@@ -119,16 +119,16 @@ export const Hero: React.FC<HeroProps> = ({ onStart }) => {
         {/* Social Proof - Minimal Style */}
         <div className="pt-10">
           <p className="text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">Trusted by builders worldwide</p>
-          <div className="flex items-center justify-center gap-4 flex-wrap max-w-3xl mx-auto">
+          <div className="flex items-center justify-center gap-3 md:gap-4 flex-wrap max-w-3xl mx-auto">
             {socialProofItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group flex items-center gap-3 px-5 py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg cursor-default"
+                className="group flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-5 md:py-3.5 rounded-xl bg-slate-900/30 backdrop-blur-sm border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:scale-105 hover:-translate-y-1 hover:shadow-lg cursor-default"
               >
-                <div className="text-slate-400 group-hover:text-slate-300 transition-colors">
+                <div className="text-slate-400 group-hover:text-slate-300 transition-colors flex-shrink-0">
                   {item.icon}
                 </div>
-                <span className="text-slate-300 font-medium">{item.text}</span>
+                <span className="text-slate-300 font-medium text-sm md:text-base whitespace-nowrap">{item.text}</span>
               </div>
             ))}
           </div>

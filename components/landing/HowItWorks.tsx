@@ -34,80 +34,42 @@ export const HowItWorks: React.FC = () => {
           </h2>
         </div>
 
-        {/* Timeline Stepper */}
+        {/* Timeline Stepper - Horizontal on all screen sizes */}
         <div className="max-w-5xl mx-auto">
-          {/* Mobile: Stack vertically */}
-          <div className="flex flex-col gap-8 lg:hidden">
-            {COPY.howItWorks.steps.map((step, idx) => {
-              const Icon = iconMap[step.icon as keyof typeof iconMap];
-              return (
-                <div
-                  key={idx}
-                  className={`
-                    flex gap-6 items-start
-                    transition-all duration-700 ease-out
-                    ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}
-                  `}
-                  style={{ transitionDelay: isVisible ? staggerDelay(idx, 150) : '0ms' }}
-                >
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-lg">
-                      <span className="text-lg font-bold text-white">{step.number}</span>
-                    </div>
-                    {idx !== COPY.howItWorks.steps.length - 1 && (
-                      <div className="w-0.5 h-20 bg-gradient-to-b from-slate-700 to-transparent" />
-                    )}
-                  </div>
-                  <div className="flex-1 pt-2">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-400">
-                        <Icon size={20} strokeWidth={2} />
-                      </div>
-                      <h3 className="text-xl font-bold text-white">{step.title}</h3>
-                    </div>
-                    <p className="text-slate-400 leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Desktop: Horizontal timeline */}
-          <div className="hidden lg:block relative">
-            {/* Connecting Line */}
-            <div className="absolute top-[60px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-
-            {/* Steps */}
-            <div className="flex justify-between items-start relative">
+          <div className="relative">
+            {/* Connecting Line - hidden on mobile, visible on tablet+ */}
+            <div className="hidden md:block absolute top-[60px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+            {/* Steps - Horizontal on all screen sizes */}
+            <div className="flex justify-between items-start relative gap-4">
               {COPY.howItWorks.steps.map((step, idx) => {
                 const Icon = iconMap[step.icon as keyof typeof iconMap];
                 return (
                   <div
                     key={idx}
                     className={`
-                      flex-1 flex flex-col items-center text-center px-4
+                      flex-1 flex flex-col items-center text-center px-2 md:px-4
                       transition-all duration-700 ease-out group
                       ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
                     `}
                     style={{ transitionDelay: isVisible ? staggerDelay(idx, 200) : '0ms' }}
                   >
-                    {/* Step Circle with Icon - sits on the line */}
-                    <div className="relative mb-10">
-                      <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-700 flex flex-col items-center justify-center shadow-xl relative z-10 group-hover:border-indigo-500/40 transition-all duration-500 group-hover:scale-105">
+                    {/* Step Circle with Icon */}
+                    <div className="relative mb-6 md:mb-10">
+                      <div className="w-20 h-20 md:w-[120px] md:h-[120px] rounded-full bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-700 flex flex-col items-center justify-center shadow-xl relative z-10 group-hover:border-indigo-500/40 transition-all duration-500 group-hover:scale-105">
                         {/* Icon */}
-                        <Icon size={32} strokeWidth={2} className="text-indigo-400 mb-2 group-hover:text-indigo-300 transition-colors" />
+                        <Icon size={24} strokeWidth={2} className="md:w-8 md:h-8 text-indigo-400 mb-1 md:mb-2 group-hover:text-indigo-300 transition-colors" />
                         {/* Number */}
-                        <span className="text-sm font-bold text-slate-400 group-hover:text-slate-300 transition-colors">Step {step.number}</span>
+                        <span className="text-xs md:text-sm font-bold text-slate-400 group-hover:text-slate-300 transition-colors">Step {step.number}</span>
                       </div>
                       {/* Subtle glow on hover */}
                       <div className="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/10 rounded-full blur-2xl transition-all duration-500 -z-10" />
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-indigo-300 transition-colors duration-300">
+                    <h3 className="text-base md:text-2xl font-bold text-white mb-2 md:mb-4 group-hover:text-indigo-300 transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed max-w-xs group-hover:text-slate-300 transition-colors duration-300">
+                    <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-xs group-hover:text-slate-300 transition-colors duration-300">
                       {step.description}
                     </p>
                   </div>

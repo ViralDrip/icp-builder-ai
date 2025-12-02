@@ -63,14 +63,14 @@ export const Founder: React.FC = () => {
           </a>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto pt-8 border-t border-slate-800/50">
+        {/* Stats - Always horizontal */}
+        <div className="grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto pt-8 border-t border-slate-800/50">
           {COPY.socialProof.stats.map((stat, idx) => (
             <div key={idx} className="text-center group">
-              <div className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
+              <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
                 {stat.value}
               </div>
-              <div className="text-slate-400 text-sm">{stat.label}</div>
+              <div className="text-slate-400 text-xs md:text-sm">{stat.label}</div>
             </div>
           ))}
         </div>
